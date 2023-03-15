@@ -37,5 +37,5 @@ export default function NavigationCard() {
         </a>
       </div>
     </Card>
-  )
+  );
 }

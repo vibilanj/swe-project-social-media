@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import NavigationCard from "@/components/NavigationCard";
+import PostFormCard from "@/components/PostFormCard";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <NavigationCard />
       </div>
       <div className="grow">
-        <Card>form here</Card>
+        <PostFormCard />
         <Card>first post test</Card>
       </div>
     </div>
