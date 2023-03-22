@@ -1,11 +1,15 @@
 import Avatar from "./Avatar";
 import Card from "./Card";
 import ClickOutHandler from "react-clickout-handler";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
+import ReactTimeAgo from "react-time-ago";
+import { UserContext } from "@/contexts/UserContext";
 
-export default function PostCard({content}) {
+export default function PostCard({content, created_at, profiles:authorProfile}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const {profile:myProfile} = useContext(UserContext)
+;
   const nonActiveElement = 'flex gap-3 py-2 my-2 hover:bg-socialBlue hover:text-white -mx-4 px-4 rounded-md transition-all hover:scale-110 hover:shadow-md shadow-gray-300';
 
   return (
@@ -14,7 +18,7 @@ export default function PostCard({content}) {
         <div>
           <Link href={'/profile'}>
             <span className="cursor-pointer">
-              <Avatar />
+              <Avatar url={authorProfile.avatar} />
             </span>
           </Link>
         </div>
@@ -22,12 +26,14 @@ export default function PostCard({content}) {
           <p>
             <Link href={'/profile'}>
               <span className="mr-1 font-semibold cursor-pointer hover:underline">
-                John Doe
+                {authorProfile.name}
               </span> 
             </Link>
-            shared an <a className="text-socialBlue">album</a>
+            shared an post
           </p>
-          <p className="text-gray-500 text-sm">2 hours ago</p>
+          <p className="text-gray-500 text-sm">
+            <ReactTimeAgo date={created_at} />
+          </p>
         </div>
         <div>
           <ClickOutHandler onClickOut={() => setDropdownOpen(false)}>
@@ -103,7 +109,7 @@ export default function PostCard({content}) {
       </div>
       <div className="flex mt-4 gap-3">
         <div>
-          <Avatar />
+          <Avatar url={myProfile?.avatar} />
         </div>
         <div className="border grow rounded-full relative">
           <textarea className="block w-full p-3 px-4 overflow-hidden h-12 rounded-full" placeholder="Leave a comment"/>
