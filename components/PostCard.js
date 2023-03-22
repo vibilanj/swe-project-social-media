@@ -4,7 +4,7 @@ import ClickOutHandler from "react-clickout-handler";
 import { useState } from "react";
 import Link from "next/link";
 
-export default function PostCard() {
+export default function PostCard({content}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const nonActiveElement = 'flex gap-3 py-2 my-2 hover:bg-socialBlue hover:text-white -mx-4 px-4 rounded-md transition-all hover:scale-110 hover:shadow-md shadow-gray-300';
 
@@ -76,7 +76,7 @@ export default function PostCard() {
         </div>
       </div>
       <div>
-        <p className="my-3 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quaerat maiores placeat quam amet, accusantium, voluptate assumenda est cum aliquam veritatis iusto quae? Nulla atque, numquam et ab doloribus exercitationem?</p>
+        <p className="my-3 text-sm">{content}</p>
         <div className="rounded-md overflow-hidden">
           <img src="https://images.unsplash.com/photo-1613169524575-afb40962aa33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
         </div>
