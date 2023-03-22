@@ -1,9 +1,10 @@
 import Avatar from "@/components/Avatar";
 import Card from "@/components/Card";
+import Cover from "@/components/Cover";
 import FriendInfo from "@/components/FriendInfo";
 import Layout from "@/components/Layout";
 import PostCard from "@/components/PostCard";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -11,6 +12,7 @@ import { useEffect, useState } from "react";
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
   const router = useRouter();
+  const session = useSession();
   const userId = router.query.id;
   const { asPath:pathname } = router;
   const supabase = useSupabaseClient();
@@ -19,6 +21,10 @@ export default function ProfilePage() {
     if (!userId) {
       return;
     }
+    fetchUser();
+  }, [userId]);
+
+  function fetchUser() {
     supabase.from('profiles')
       .select()
       .eq('id', userId)
@@ -29,8 +35,8 @@ export default function ProfilePage() {
         if (result.data) {
           setProfile(result.data[0]);
         }
-      })
-  }, [userId]);
+      });
+  }
   
 
   const isPosts = pathname.includes('posts') || pathname === '/profile';
@@ -41,16 +47,16 @@ export default function ProfilePage() {
   const tabClasses = 'flex gap-1 px-4 py-1 items-center border-b-4 border-b-white';
   const activeTabClasses = 'flex gap-1 px-4 py-1 items-center border-socialBlue border-b-4 text-socialBlue font-bold';
 
+  const isMyUser = userId === session?.user?.id;
+
   return(
     <Layout>
       <Card noPadding={true}>
         <div className="relative overflow-hidden rounded-md">
-          <div className="h-36 overflow-hidden flex justify-center items-center">
-            <img src="https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
-          </div>
-          <div className="absolute top-24 left-4">
+          <Cover url={profile?.cover} editable={isMyUser} onChange={fetchUser} />
+          <div className="absolute top-24 left-4 z-20">
             {profile && (
-              <Avatar url={profile.avatar} size={'lg'}/>
+              <Avatar url={profile.avatar} size={'lg'} editable={isMyUser} onChange={fetchUser} />
             )}
           </div>
           <div className="p-4 pt-0 md:pt-4 pb-0">
@@ -59,7 +65,7 @@ export default function ProfilePage() {
                 {profile?.name}
               </h1>
               <div className="text-gray-500 leading-4">
-                Stockholm, Sweden
+                {profile?.place} 
               </div>
             </div>
             <div className="mt-4 md:mt-10 flex gap-1">
