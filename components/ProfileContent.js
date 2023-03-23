@@ -37,7 +37,7 @@ export default function ProfileContent({activeTab, userId}) {
     const {data} = await supabase.from('profiles')
       .select()
       .eq('id', userId);
-    return data[0];
+    return data?.[0];
   }
 
   return (
