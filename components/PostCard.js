@@ -32,7 +32,7 @@ export default function PostCard({content, created_at, photos, profiles:authorPr
             shared an post
           </p>
           <p className="text-gray-500 text-sm">
-            <ReactTimeAgo date={created_at} />
+            <ReactTimeAgo date={ (new Date(created_at)).getTime() } />
           </p>
         </div>
         <div>
@@ -86,15 +86,12 @@ export default function PostCard({content, created_at, photos, profiles:authorPr
         {photos.length > 0 && (
           <div className="flex gap-4">
             {photos.map(photo => (
-              <div className="">
+              <div key={photo} className="">
                 <img src={photo} className="rounded-md" alt="" />
               </div>
             ))}
           </div>
         )}
-        {/* <div className="rounded-md overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1613169524575-afb40962aa33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
-        </div> */}
       </div>
       <div className="mt-5 flex gap-8">
         <button className="flex gap-2 items-center">
