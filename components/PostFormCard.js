@@ -1,7 +1,7 @@
 import { UserContext } from "@/contexts/UserContext";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useContext, useEffect, useState } from "react";
-import { BounceLoader } from "react-spinners";
+// import { BounceLoader } from "react-spinners";
 import Avatar from "./Avatar";
 import Card from "./Card";
 import Preloader from "./Preloader";
