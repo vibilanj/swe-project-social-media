@@ -11,8 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        socialBg:'#F5F7FB',
-        socialBlue: '#218DFA',
+        socialGreen: 'rgb(5 150 105)',
       },
     },
   },

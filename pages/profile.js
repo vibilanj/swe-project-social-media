@@ -1,17 +1,13 @@
 import Avatar from "@/components/Avatar";
 import Card from "@/components/Card";
 import Cover from "@/components/Cover";
-import FriendInfo from "@/components/FriendInfo";
 import Layout from "@/components/Layout";
-import PostCard from "@/components/PostCard";
 import ProfileContent from "@/components/ProfileContent";
 import ProfileTabs from "@/components/ProfileTabs";
-import { UserContext } from "@/contexts/UserContext";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {UserContextProvider} from "../contexts/UserContext";
+import { UserContextProvider } from "../contexts/UserContext";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
