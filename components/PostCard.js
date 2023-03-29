@@ -114,7 +114,7 @@ export default function PostCard({ id, content, created_at, photos, profiles: au
     <Card>
       <div className="flex gap-3">
         <div>
-          <Link href={'/profile'}>
+          <Link href={'/profile/' + authorProfile.id}>
             <span className="cursor-pointer">
               <Avatar url={authorProfile.avatar} />
             </span>
@@ -222,7 +222,11 @@ export default function PostCard({ id, content, created_at, photos, profiles: au
       </div>
       <div className="flex mt-4 gap-3">
         <div>
-          <Avatar url={myProfile?.avatar} />
+          <Link href={'/profile/' + myProfile?.id}>
+            <span className="cursor-pointer">
+              <Avatar url={myProfile?.avatar} />
+            </span>
+          </Link>
         </div>
         <div className="border grow rounded-full relative">
           <form onSubmit={postComment}>
