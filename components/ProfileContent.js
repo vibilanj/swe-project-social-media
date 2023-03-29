@@ -53,8 +53,10 @@ export default function ProfileContent({activeTab, userId}) {
         <div>
           <Card>
             <h2 className="text-3xl mb-2">About me</h2>
-            <p className="mb-2 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis dolorum saepe accusantium porro doloribus voluptas sunt eum in nobis autem fugiat fugit, atque, eaque quibusdam facilis distinctio quae et at?</p>
-            <p className="mb-2 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tempore, rem minus sit, optio repellendus nemo earum, similique placeat corrupti praesentium consectetur esse. Delectus odio, voluptatem omnis dignissimos eaque repudiandae.</p>
+            <p className="mb-2 text-sm">Hi, I'm a data scientist with a background in Computer Science and Statistics. My expertise lies in machine learning, statistical modeling, and data visualization, and I've worked with various industries, including finance, healthcare, and e-commerce.</p>
+            <p className="mb-2 text-sm">My passion for transforming complex data into valuable insights has helped businesses identify new opportunities, optimize operations, and increase profitability. I'm a great communicator and team player, and I always collaborate with colleagues and stakeholders to ensure my insights are effectively communicated and understood.</p>
+            <p className="mb-2 text-sm">Aside from my technical expertise, I'm also passionate about giving back to my community. I volunteer my time to mentor aspiring data scientists and support organizations focused on using data for social good.</p>
+            <p className="mb-2 text-sm">In my free time, I enjoy hiking, reading, and exploring new technologies. I'm always eager to learn and expand my knowledge in the ever-evolving field of data science.</p>
           </Card>
         </div>
       )}
